@@ -1,0 +1,1 @@
+# detectarTarjeta, expulsarTarjeta

@@ -1,0 +1,1 @@
+# Propiedades: sesionActiva, estadoTarjeta, estadoDispensador, efectivoDisponibleCajero, saldoDisponibleCuentaActual, claveUsuario, cantidadPapelDisponible
