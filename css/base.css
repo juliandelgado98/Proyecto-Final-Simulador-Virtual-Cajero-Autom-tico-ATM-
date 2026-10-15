@@ -1,0 +1,38 @@
+:root {
+    --azulBanco: #3b83bd;
+    --azulOscuro: #2a669a;
+    --azulTitulo: #1b4f7c;
+    --grisBoton: #5a5a5a;
+    --grisBotonOscuro: #434343;
+    --naranja: #f28c1e;
+    --naranjaOscuro: #d4730a;
+    --rojo: #d92a2a;
+    --rojoOscuro: #b01e1e;
+    --amarilloTecla: #d69e16;
+    --verdeTecla: #288a3c;
+    --textoOscuro: #1f2d3a;
+
+    --biselArriba: 10.2cqw;
+    --biselAbajo: 3.2cqw;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    padding: 2vh 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #cfd6dc;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--textoOscuro);
+}

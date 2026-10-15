@@ -1,0 +1,3 @@
+function mostrarPantallaMenuPrincipal() {
+    mostrarPantalla("pantallaInicio");
+}

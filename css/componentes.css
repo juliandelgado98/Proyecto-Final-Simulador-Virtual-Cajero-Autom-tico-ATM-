@@ -1,0 +1,145 @@
+.botonAtm {
+    align-self: center;
+    width: 100%;
+
+    min-height: 6.7cqw;
+    margin: 0;
+
+    padding: 0.65em 1.3em;
+    font-size: 1.12em;
+    font-weight: bold;
+    line-height: 1.2;
+    text-align: center;
+    color: #ffffff;
+    background: var(--azulBanco);
+    border: 0;
+    border-radius: 0;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+}
+
+.botonAtm:hover,
+.botonAtm:focus-visible {
+    background: var(--azulOscuro);
+}
+
+.izquierda {
+    grid-column: 1;
+}
+
+.derecha {
+    grid-column: 3;
+}
+
+.filaUno {
+    grid-row: 2;
+}
+
+.filaDos {
+    grid-row: 3;
+}
+
+.filaTres {
+    grid-row: 4;
+}
+
+.filaCuatro {
+    grid-row: 5;
+}
+
+.botonAtm.filaDos,
+.botonAtm.filaTres,
+.botonAtm.filaCuatro {
+    background: var(--azulBanco);
+}
+
+.botonAtm.filaDos:hover,
+.botonAtm.filaDos:focus-visible,
+.botonAtm.filaTres:hover,
+.botonAtm.filaTres:focus-visible,
+.botonAtm.filaCuatro:hover,
+.botonAtm.filaCuatro:focus-visible {
+    background: var(--azulOscuro);
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25em;
+    font-weight: bold;
+}
+
+.campo input,
+.campo select {
+    padding: 0.45em 0.65em;
+    font-size: 1em;
+    color: var(--textoOscuro);
+    background: #ffffff;
+    border: 2px solid #9db8cf;
+    border-radius: 0;
+}
+
+.campo input:focus,
+.campo select:focus {
+    outline: none;
+    border-color: var(--azulBanco);
+}
+
+.teclaFisica {
+    height: 4.2cqw;
+    padding: 0;
+    font-size: 1.7cqw;
+    font-weight: bold;
+    color: #1a1d21;
+    background: linear-gradient(180deg, #e5e9ed 0%, #aeb6bf 100%);
+    border: 1px solid #6c747d;
+    border-radius: 3px;
+    box-shadow: 0 3px 0 #515860, inset 0 1px 0 #ffffff;
+    cursor: pointer;
+}
+
+.teclaFisica:active {
+    transform: translateY(2px);
+    box-shadow: 0 1px 0 #515860;
+}
+
+.teclaAccion {
+    height: 100%;
+    font-size: 1.25cqw;
+    color: #ffffff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.teclaCancelar {
+    background: linear-gradient(180deg, #e03b3b 0%, #a81c1c 100%);
+    border-color: #7a1111;
+    box-shadow: 0 3px 0 #5e0c0c;
+}
+
+.teclaCorregir {
+    background: linear-gradient(180deg, #f0b829 0%, #b88409 100%);
+    border-color: #876004;
+    box-shadow: 0 3px 0 #634602;
+}
+
+.teclaConfirmar {
+    background: linear-gradient(180deg, #35a84b 0%, #1d6e2c 100%);
+    border-color: #134d1e;
+    box-shadow: 0 3px 0 #0c3614;
+}
+
+.botonTarjeta {
+    padding: 0.8cqw 1.2cqw;
+    font-size: 1.4cqw;
+    font-weight: bold;
+    color: #1a1d21;
+    background: linear-gradient(180deg, #e5e9ed 0%, #aeb6bf 100%);
+    border: 1px solid #6c747d;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.botonTarjeta:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}

@@ -1,1 +1,0 @@
-# Estructura del cajero: pantalla, teclado, ranura de tarjeta, dispensador, impresora

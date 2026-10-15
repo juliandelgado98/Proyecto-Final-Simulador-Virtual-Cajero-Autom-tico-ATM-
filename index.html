@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cajero Automático Santander - Red Banelco</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/pantallas.css">
+    <link rel="stylesheet" href="css/componentes.css">
+    <link rel="stylesheet" href="css/accesibilidad.css">
+</head>
+<body>
+    <main class="cajero" id="cajero">
+        <p class="avisoPractica">Está practicando: este cajero es un simulador, no se usa dinero real.</p>
+        <div class="bloquePantalla">
+            <div class="bisel biselIzquierdo" aria-hidden="true">
+                <div class="biselBotones">
+                    <span class="biselBoton"></span>
+                    <span class="biselBoton"></span>
+                    <span class="biselBoton"></span>
+                    <span class="biselBoton"></span>
+                </div>
+            </div>
+
+            <header class="cabecera">
+                <img
+                    class="logo logoSantander"
+                    src="https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b8/Banco_Santander_Logotipo.svg/1280px-Banco_Santander_Logotipo.svg.png?utm_source=es.wikipedia.org&utm_campaign=index&utm_content=thumbnail"
+                    alt="Santander">
+                <img
+                    class="logo logoBanelco"
+                    src="https://upload.wikimedia.org/wikipedia/commons/f/f4/Banelco_logo.png?utm_source=es.wikipedia.org&utm_campaign=index&utm_content=original"
+                    alt="Banelco">
+            </header>
+
+            <section class="cuerpo">
+                <div class="pantalla" id="pantallaEspera">
+                    <div class="contenidoCentral">
+                        <h2 class="tituloPantalla">Bienvenido</h2>
+                        <p class="textoPantalla">Para comenzar, presione "Insertar tarjeta" en el
+                            módulo TARJETA, debajo de la pantalla.</p>
+                    </div>
+                </div>
+
+                <form class="pantalla" id="pantallaLogin" data-operacion="validarPin"
+                    novalidate hidden>
+                    <div class="contenidoAmplio">
+                        <h2 class="tituloPantalla">Ingrese su clave</h2>
+                        <label class="campo" for="inputPin">
+                            Clave de 4 dígitos
+                            <input id="inputPin" type="password" inputmode="numeric" maxlength="4"
+                                autocomplete="off">
+                        </label>
+                        <p class="mensajeError" role="alert"></p>
+                    </div>
+                    <button type="button" class="botonAtm izquierda filaCuatro"
+                        data-accion="salir">Retirar tarjeta</button>
+                    <button type="submit" class="botonAtm derecha filaCuatro">Confirmar</button>
+                </form>
+
+                <div class="pantalla" id="pantallaInicio" hidden>
+                    <div class="contenidoCentral">
+                        <h2 class="tituloPantalla">Menú principal</h2>
+                        <p class="textoPantalla">Seleccione la operación que desea realizar</p>
+                        <!--
+                        <p class="saldoPantalla">
+                            Saldo disponible: <strong class="saldoActual"></strong> 
+                        </p>
+                        -->
+                        
+                    </div>
+                    <button type="button" class="botonAtm izquierda filaUno"
+                        data-destino="pantallaConsultar">Consultas</button>
+                    <button type="button" class="botonAtm derecha filaUno"
+                        data-destino="pantallaExtraer">Extraer efectivo</button>
+                    <button type="button" class="botonAtm izquierda filaDos"
+                        data-destino="pantallaTransferencias">Transferencias</button>
+                    <button type="button" class="botonAtm derecha filaDos"
+                        data-destino="pantallaPagos">Pago de Servicios</button>
+                    <button type="button" class="botonAtm izquierda filaTres"
+                        data-destino="pantallaGestionarClaves">Gestionar claves</button>
+                </div>
+
+                <div class="pantalla" id="pantallaConsultar" hidden>
+                    <div class="contenidoCentral">
+                        <h2 class="tituloPantalla">Consultas</h2>
+                        <p class="textoPantalla">¿Qué desea consultar?</p>
+                    </div>
+                    <button type="button" class="botonAtm izquierda filaUno"
+                        data-accion="consultarSaldo">Ver saldo</button>
+                    <button type="button" class="botonAtm derecha filaUno"
+                        data-accion="solicitarUltimosMovimientos">Últimos movimientos</button>
+                    <button type="button" class="botonAtm izquierda filaCuatro"
+                        data-destino="pantallaInicio">Volver</button>
+                </div>
+
+                <div class="pantalla" id="pantallaExtraer" hidden>
+                    <div class="contenidoCentral">
+                        <h2 class="tituloPantalla">Extraer efectivo</h2>
+                        <p class="textoPantalla">Seleccione el monto</p>
+                    </div>
+                    <button type="button" class="botonAtm izquierda filaUno"
+                        data-accion="extraerEfectivo" data-monto="1000">$ 1.000</button>
+                    <button type="button" class="botonAtm derecha filaUno"
+                        data-accion="extraerEfectivo" data-monto="2000">$ 2.000</button>
+                    <button type="button" class="botonAtm izquierda filaDos"
+                        data-accion="extraerEfectivo" data-monto="5000">$ 5.000</button>
+                    <button type="button" class="botonAtm derecha filaDos"
+                        data-accion="extraerEfectivo" data-monto="10000">$ 10.000</button>
+                    <button type="button" class="botonAtm izquierda filaCuatro"
+                        data-destino="pantallaInicio">Volver</button>
+                </div>
+
+                <form class="pantalla" id="pantallaGestionarClaves" data-operacion="gestionarClaves"
+                    novalidate hidden>
+                    <div class="contenidoAmplio">
+                        <h2 class="tituloPantalla">Cambiar mi clave</h2>
+                        <label class="campo" for="inputClaveActual">
+                            Clave actual
+                            <input id="inputClaveActual" type="password" inputmode="numeric"
+                                maxlength="4" autocomplete="off">
+                        </label>
+                        <label class="campo" for="inputClaveNueva">
+                            Clave nueva
+                            <input id="inputClaveNueva" type="password" inputmode="numeric"
+                                maxlength="4" autocomplete="off">
+                        </label>
+                        <label class="campo" for="inputClaveConfirmar">
+                            Repita la clave nueva
+                            <input id="inputClaveConfirmar" type="password" inputmode="numeric"
+                                maxlength="4" autocomplete="off">
+                        </label>
+                        <p class="mensajeError" role="alert"></p>
+                    </div>
+                    <button type="button" class="botonAtm izquierda filaCuatro"
+                        data-destino="pantallaInicio">Volver</button>
+                    <button type="submit" class="botonAtm derecha filaCuatro">Confirmar</button>
+                </form>
+
+                <div class="pantalla" id="pantallaError" hidden>
+                    <div class="contenidoCentral">
+                        <h2 class="tituloPantalla">Algo no salió bien</h2>
+                        <p class="textoPantalla" id="errorMensaje" role="alert"></p>
+                    </div>
+                    <button type="button" class="botonAtm derecha filaCuatro"
+                        data-accion="continuar">Aceptar</button>
+                </div>
+
+                <div class="pantalla" id="pantallaProceso" hidden>
+                    <div class="contenidoCentral">
+                        <h2 class="tituloPantalla">Procesando</h2>
+                        <p class="textoPantalla" id="procesoMensaje">Por favor, espere un momento.</p>
+                    </div>
+                </div>
+
+                <div class="pantalla" id="pantallaTransferencias" hidden>
+                    <div class="contenidoCentral">
+                        <h2 class="tituloPantalla">Transferencias</h2>
+                        <p class="textoPantalla">¿Qué desea hacer?</p>
+                    </div>
+                    <button type="button" class="botonAtm izquierda filaUno"
+                        data-destino="pantallaNuevaTransferencia">Nueva Transferencia</button>
+                    <button type="button" class="botonAtm derecha filaUno"
+                        data-destino="pantallaHistorial">Historial</button>
+                </div>
+
+                <div class="pantalla" id="pantallaNuevaTransferencia" hidden>
+                    <div class="contenidoCentral">
+                        <h2 class="tituloPantalla">Nueva Transferencia</h2>
+                        <p class="textoPantalla">Seleccione el método de transferencia</p>
+                    </div>
+                    <button type="button" class="botonAtm izquierda filaUno"
+                        data-destino="pantallaTransferenciaCbu">Transferir por CBU</button>
+                    <button type="button" class="botonAtm derecha filaUno"
+                        data-destino="pantallaTransferenciaAlias">Transferir por Alias</button>
+                    <button type="button" class="botonAtm izquierda filaCuatro"
+                        data-destino="pantallaTransferencias">Volver</button>
+                </div>
+
+                <form class="pantalla" id="pantallaTransferenciaCbu"
+                    data-operacion="transferirCbu" novalidate hidden>
+                    <div class="contenidoAmplio">
+                        <h2 class="tituloPantalla">Transferir por CBU</h2>
+                        <label class="campo" for="inputCbu">
+                            CBU del destinatario (22 dígitos)
+                            <input id="inputCbu" type="text" inputmode="numeric" maxlength="22"
+                                autocomplete="off">
+                        </label>
+                        <label class="campo" for="inputMontoCbu">
+                            Monto a transferir ($)
+                            <input id="inputMontoCbu" type="number" min="0" step="0.01"
+                                autocomplete="off">
+                        </label>
+                        <p class="mensajeError" role="alert"></p>
+                    </div>
+                    <button type="button" class="botonAtm izquierda filaCuatro"
+                        data-destino="pantallaNuevaTransferencia">Volver</button>
+                    <button type="submit" class="botonAtm derecha filaCuatro">Confirmar</button>
+                </form>
+
+                <form class="pantalla" id="pantallaTransferenciaAlias"
+                    data-operacion="transferirAlias" novalidate hidden>
+                    <div class="contenidoAmplio">
+                        <h2 class="tituloPantalla">Transferir por Alias</h2>
+                        <label class="campo" for="inputAlias">
+                            Alias del destinatario (ej. perro.gato.mate)
+                            <input id="inputAlias" type="text" autocomplete="off">
+                        </label>
+                        <label class="campo" for="inputMontoAlias">
+                            Monto a transferir ($)
+                            <input id="inputMontoAlias" type="number" min="0" step="0.01"
+                                autocomplete="off">
+                        </label>
+                        <p class="mensajeError" role="alert"></p>
+                    </div>
+                    <button type="button" class="botonAtm izquierda filaCuatro"
+                        data-destino="pantallaNuevaTransferencia">Volver</button>
+                    <button type="submit" class="botonAtm derecha filaCuatro">Confirmar</button>
+                </form>
+
+                <div class="pantalla" id="pantallaHistorial" hidden>
+                    <div class="contenidoAmplio">
+                        <h2 class="tituloPantalla">Historial de transferencias</h2>
+                        <ul class="listaDatos" id="listaHistorial"></ul>
+                    </div>
+                    <button type="button" class="botonAtm izquierda filaCuatro"
+                        data-destino="pantallaTransferencias">Volver</button>
+                </div>
+
+                <div class="pantalla" id="pantallaPagos" hidden>
+                    <div class="contenidoCentral">
+                        <h2 class="tituloPantalla">Pago de Servicios</h2>
+                        <p class="textoPantalla">Seleccione una opción</p>
+                    </div>
+                    <button type="button" class="botonAtm izquierda filaUno"
+                        data-destino="pantallaPagarServicio">Pagar servicios</button>
+                    <button type="button" class="botonAtm derecha filaUno"
+                        data-destino="pantallaRecargas">Recargar</button>
+                    <button type="button" class="botonAtm izquierda filaDos"
+                        data-destino="pantallaUltimosPagos">Consultar últimos pagos</button>
+                    <button type="button" class="botonAtm derecha filaDos"
+                        data-destino="pantallaProximosVencimientos">
+                        Consultar próximos vencimientos</button>
+                </div>
+
+                <form class="pantalla" id="pantallaPagarServicio" data-operacion="pagarServicio"
+                    novalidate hidden>
+                    <div class="contenidoAmplio">
+                        <h2 class="tituloPantalla">Pagar servicios</h2>
+                        <label class="campo" for="selectServicio">
+                            Servicio a pagar
+                            <select id="selectServicio">
+                                <option value="">Seleccione un servicio</option>
+                                <option value="Edenor (Luz)">Edenor (Luz)</option>
+                                <option value="Metrogas (Gas)">Metrogas (Gas)</option>
+                                <option value="AySA (Agua)">AySA (Agua)</option>
+                                <option value="Telecentro (Internet)">Telecentro (Internet)</option>
+                                <option value="Personal (Telefonía)">Personal (Telefonía)</option>
+                            </select>
+                        </label>
+                        <label class="campo" for="inputMontoServicio">
+                            Monto a pagar ($)
+                            <input id="inputMontoServicio" type="number" min="0" step="0.01"
+                                autocomplete="off">
+                        </label>
+                        <p class="mensajeError" role="alert"></p>
+                    </div>
+                    <button type="button" class="botonAtm izquierda filaCuatro"
+                        data-destino="pantallaPagos">Volver</button>
+                    <button type="submit" class="botonAtm derecha filaCuatro">Confirmar</button>
+                </form>
+
+                <div class="pantalla" id="pantallaRecargas" hidden>
+                    <div class="contenidoCentral">
+                        <h2 class="tituloPantalla">Recargar</h2>
+                        <p class="textoPantalla">Seleccione qué desea recargar</p>
+                    </div>
+                    <button type="button" class="botonAtm izquierda filaUno"
+                        data-destino="pantallaRecargaCelular">Recargar celular</button>
+                    <button type="button" class="botonAtm derecha filaUno"
+                        data-destino="pantallaRecargaSube">Recargar SUBE</button>
+                    <button type="button" class="botonAtm izquierda filaCuatro"
+                        data-destino="pantallaPagos">Volver</button>
+                </div>
+
+                <form class="pantalla" id="pantallaRecargaCelular"
+                    data-operacion="recargarCelular" novalidate hidden>
+                    <div class="contenidoAmplio">
+                        <h2 class="tituloPantalla">Recargar celular</h2>
+                        <label class="campo" for="inputNumeroCelular">
+                            Número de celular
+                            <input id="inputNumeroCelular" type="text" inputmode="numeric"
+                                autocomplete="off">
+                        </label>
+                        <label class="campo" for="inputMontoCelular">
+                            Monto a recargar ($)
+                            <input id="inputMontoCelular" type="number" min="0" step="0.01"
+                                autocomplete="off">
+                        </label>
+                        <p class="mensajeError" role="alert"></p>
+                    </div>
+                    <button type="button" class="botonAtm izquierda filaCuatro"
+                        data-destino="pantallaRecargas">Volver</button>
+                    <button type="submit" class="botonAtm derecha filaCuatro">Confirmar</button>
+                </form>
+
+                <form class="pantalla" id="pantallaRecargaSube" data-operacion="recargarSube"
+                    novalidate hidden>
+                    <div class="contenidoAmplio">
+                        <h2 class="tituloPantalla">Recargar SUBE</h2>
+                        <label class="campo" for="inputNumeroSube">
+                            Número de tarjeta SUBE
+                            <input id="inputNumeroSube" type="text" inputmode="numeric"
+                                autocomplete="off">
+                        </label>
+                        <label class="campo" for="inputMontoSube">
+                            Monto a recargar ($)
+                            <input id="inputMontoSube" type="number" min="0" step="0.01"
+                                autocomplete="off">
+                        </label>
+                        <p class="mensajeError" role="alert"></p>
+                    </div>
+                    <button type="button" class="botonAtm izquierda filaCuatro"
+                        data-destino="pantallaRecargas">Volver</button>
+                    <button type="submit" class="botonAtm derecha filaCuatro">Confirmar</button>
+                </form>
+
+                <div class="pantalla" id="pantallaUltimosPagos" hidden>
+                    <div class="contenidoAmplio">
+                        <h2 class="tituloPantalla">Últimos pagos</h2>
+                        <ul class="listaDatos" id="listaUltimosPagos"></ul>
+                    </div>
+                    <button type="button" class="botonAtm izquierda filaCuatro"
+                        data-destino="pantallaPagos">Volver</button>
+                </div>
+
+                <div class="pantalla" id="pantallaProximosVencimientos" hidden>
+                    <div class="contenidoAmplio">
+                        <h2 class="tituloPantalla">Próximos vencimientos</h2>
+                        <ul class="listaDatos" id="listaProximosVencimientos"></ul>
+                    </div>
+                    <button type="button" class="botonAtm izquierda filaCuatro"
+                        data-destino="pantallaPagos">Volver</button>
+                </div>
+
+                <div class="pantalla" id="pantallaResultado" hidden>
+                    <div class="contenidoCentral">
+                        <h2 class="tituloPantalla" id="resultadoTitulo"></h2>
+                        
+                        <p class="textoPantalla" id="resultadoMensaje"></p>
+                        
+                        <p class="saldoPantalla">
+                            Saldo disponible: <strong class="saldoActual"></strong>
+                        
+                        </p>
+                        
+                    </div>
+                    <button type="button" class="botonAtm derecha filaCuatro"
+                        data-accion="continuar">Continuar</button>
+                </div>
+
+                <div class="pantalla" id="pantallaSalida" hidden>
+                    <div class="contenidoCentral">
+                        <h2 class="tituloPantalla">Gracias por utilizar Banco Santander</h2>
+                        <p class="textoPantalla">Retire su tarjeta. Su sesión ha finalizado.</p>
+                    </div>
+                    <button type="button" class="botonAtm derecha filaCuatro"
+                        data-accion="nuevaSesion">Nueva sesión</button>
+                </div>
+            </section>
+
+            <footer class="pie">
+                <button type="button" class="botonPie botonInicio" id="botonInicio"
+                    data-destino="pantallaInicio">
+                    <img
+                        class="iconoBoton"
+                        src="https://cdn-icons-png.magnific.com/256/13979/13979601.png?semt=ais_white_label"
+                        alt="">
+                    <span>Volver a inicio</span>
+                </button>
+                <button type="button" class="botonPie botonSalir" id="botonSalir"
+                    data-accion="salir">
+                    <img
+                        class="iconoBoton"
+                        src="https://uxwing.com/wp-content/themes/uxwing/download/arrow-direction/curved-arrow-white-icon.png"
+                        alt="">
+                    <span>Salir</span>
+                </button>
+            </footer>
+
+            <div class="bisel biselDerecho" aria-hidden="true">
+                <div class="biselBotones">
+                    <span class="biselBoton"></span>
+                    <span class="biselBoton"></span>
+                    <span class="biselBoton"></span>
+                    <span class="biselBoton"></span>
+                </div>
+            </div>
+        </div>
+
+        <section class="chasisFisico" aria-label="Chasis físico del cajero">
+            <div class="chasisSuperior">
+                <div class="tecladoContenedor">
+                    <div class="tecladoNumeros">
+                        <button type="button" class="teclaFisica">1</button>
+                        <button type="button" class="teclaFisica">2</button>
+                        <button type="button" class="teclaFisica">3</button>
+                        <button type="button" class="teclaFisica">4</button>
+                        <button type="button" class="teclaFisica">5</button>
+                        <button type="button" class="teclaFisica">6</button>
+                        <button type="button" class="teclaFisica">7</button>
+                        <button type="button" class="teclaFisica">8</button>
+                        <button type="button" class="teclaFisica">9</button>
+                        <button type="button" class="teclaFisica">&nbsp;</button>
+                        <button type="button" class="teclaFisica">0</button>
+                        <button type="button" class="teclaFisica">&nbsp;</button>
+                    </div>
+                    <div class="tecladoAcciones">
+                        <button type="button" class="teclaFisica teclaAccion teclaCancelar">
+                            CANCELAR
+                        </button>
+                        <button type="button" class="teclaFisica teclaAccion teclaCorregir">
+                            CORREGIR
+                        </button>
+                        <button type="button" class="teclaFisica teclaAccion teclaConfirmar">
+                            CONFIRMAR
+                        </button>
+                    </div>
+                </div>
+
+                <div class="moduloTarjeta">
+                    <span class="rotuloChasis">TARJETA</span>
+                    <button type="button" class="botonTarjeta" id="botonInsertarTarjeta"
+                        data-accion="insertarTarjeta">Insertar tarjeta</button>
+                    <div class="ranuraTarjetaMarco">
+                        <span class="ledTarjeta"></span>
+                        <div class="ranuraTarjeta"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dispensadorBilletes">
+                <span class="rotuloChasis">RETIRE SU DINERO</span>
+                <div class="ranuraBilletes"></div>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/config/constantes.js"></script>
+    <script src="js/config/datos-simulados.js"></script>
+    <script src="js/estado/estado.js"></script>
+    <script src="js/utiles/formato.js"></script>
+    <script src="js/utiles/validaciones.js"></script>
+    <script src="js/utiles/teclado.js"></script>
+    <script src="js/utiles/ui.js"></script>
+    <script src="js/pantallas/pantalla-espera.js"></script>
+    <script src="js/pantallas/pantalla-login.js"></script>
+    <script src="js/pantallas/pantalla-menu-principal.js"></script>
+    <script src="js/pantallas/pantalla-menu-consultar.js"></script>
+    <script src="js/pantallas/pantalla-menu-extraer.js"></script>
+    <script src="js/pantallas/pantalla-menu-transferencias.js"></script>
+    <script src="js/pantallas/pantalla-menu-pagar-servicios.js"></script>
+    <script src="js/pantallas/pantalla-menu-gestionar-claves.js"></script>
+    <script src="js/pantallas/pantalla-error.js"></script>
+    <script src="js/pantallas/pantalla-proceso.js"></script>
+    <script src="js/operaciones/tarjeta.js"></script>
+    <script src="js/operaciones/autenticacion.js"></script>
+    <script src="js/operaciones/consultas.js"></script>
+    <script src="js/operaciones/extraccion.js"></script>
+    <script src="js/operaciones/transferencias.js"></script>
+    <script src="js/operaciones/servicios.js"></script>
+    <script src="js/operaciones/claves.js"></script>
+    <script src="js/operaciones/comprobante.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

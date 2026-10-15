@@ -1,1 +1,0 @@
-# Validar montos, formato de CBU, alias, etc.

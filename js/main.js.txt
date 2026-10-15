@@ -1,1 +1,0 @@
-# Punto de entrada: inicializa el cajero y conecta los módulos

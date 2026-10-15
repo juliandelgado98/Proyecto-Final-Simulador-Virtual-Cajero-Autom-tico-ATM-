@@ -1,0 +1,9 @@
+:focus-visible {
+    outline: 3px solid var(--naranja);
+    outline-offset: 2px;
+}
+
+.campo input:focus,
+.campo select:focus {
+    outline: 3px solid var(--naranja);
+}
