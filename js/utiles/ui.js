@@ -82,15 +82,24 @@ function mostrarPantalla(idPantalla) {
     actualizarPantalla();
 }
 
-function mostrarResultado(tituloResultado, mensajeResultado, idPantallaRetorno) {
+function mostrarResultado(tituloResultado, mensajeResultado, idPantallaAnterior, idPantallaRetorno) {
     document.getElementById("resultadoTitulo").textContent = tituloResultado;
     document.getElementById("resultadoMensaje").textContent = mensajeResultado;
     pantallaRetorno = idPantallaRetorno;
+    this.ultimaOperacion = idPantallaAnterior;
     mostrarPantalla("pantallaResultado");
 }
 
 function mostrarErrorFormulario(formulario, mensajeError) {
     formulario.querySelector(".mensajeError").textContent = mensajeError;
+}
+
+function imprimirComprobante(contenidoComprobante) {
+    const ventanaComprobante = window.open("", "_blank", "width=400,height=600");
+    ventanaComprobante.document.write("<html><head><title>Comprobante</title></head><body>");
+    ventanaComprobante.document.write("<pre>" + contenidoComprobante + "</pre>");
+    ventanaComprobante.document.write("</body></html>");
+    ventanaComprobante.document.close();
 }
 
 accionesBoton.continuar = () => mostrarPantalla(pantallaRetorno);

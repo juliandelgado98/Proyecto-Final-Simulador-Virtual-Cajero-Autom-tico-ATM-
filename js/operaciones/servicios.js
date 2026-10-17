@@ -18,6 +18,7 @@ Object.assign(CajeroAutomatico.prototype, {
         }
         this.descontarSaldo(montoAPagar);
         this.registrarPago("Pago de servicio", servicioAPagar, montoAPagar);
+        this.registrarUltimaOperacion('Pago de servicio', `Se realizó de manera exitosa el pago del serivicio ${servicioAPagar} de $${montoAPagar}`)
         this.motivoRechazo = "";
         return true;
     },
@@ -32,6 +33,7 @@ Object.assign(CajeroAutomatico.prototype, {
         }
         this.descontarSaldo(montoARecargar);
         this.registrarPago(tipoRecarga, `Número ${numeroDestino.trim()}`, montoARecargar);
+        this.registrarUltimaOperacion('Recarga de credito', `Se realizó de manera exitosa. ${tipoRecarga} de ${montoARecargar} al Número ${numeroDestino.trim()}`)
         this.motivoRechazo = "";
         return true;
     }

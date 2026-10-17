@@ -18,6 +18,7 @@ Object.assign(CajeroAutomatico.prototype, {
         }
         this.descontarSaldo(montoATransferir);
         this.registrarTransferencia("CBU", destinatarioCBU, montoATransferir);
+        this.registrarUltimaOperacion('Transferencia por CBU', `Se realizó Transferencia de $${montoATransferir} al CBU: ${destinatarioCBU}`)
         this.motivoRechazo = "";
         return true;
     },
@@ -32,6 +33,7 @@ Object.assign(CajeroAutomatico.prototype, {
         }
         this.descontarSaldo(montoATransferir);
         this.registrarTransferencia("Alias", destinatarioAlias, montoATransferir);
+        this.registrarUltimaOperacion('Transferencia por CBU', `Se realizó Transferencia de $${montoATransferir} al CBU: ${destinatarioAlias}`)
         this.motivoRechazo = "";
         return true;
     }

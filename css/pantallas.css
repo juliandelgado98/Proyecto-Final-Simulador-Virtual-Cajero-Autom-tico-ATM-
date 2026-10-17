@@ -26,7 +26,6 @@
     padding: 0 0.4cqw 0.5cqw;
     text-align: left;
 }
-
 .contenidoAmplio {
     grid-column: 1 / 4;
     grid-row: 1 / 5;
@@ -99,3 +98,28 @@
     font-weight: bold;
     white-space: nowrap;
 }
+
+.comprobante {
+    margin: 0;
+    display: flex;
+    padding: 0.5em;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: #0000001a 0.2em 0.2em 0.5em;
+    border: #0000001a 1px solid;
+    border-radius: 0px 0px 30px;
+    color: var(--grisBoton);
+}
+
+.eco-modal-icon {
+    color: #2e7d32;
+    display: flex;
+    align-items: center;
+}
+
+.eco-modal-icon span{
+    color: #000000;
+    font-weight: 700;
+}
+

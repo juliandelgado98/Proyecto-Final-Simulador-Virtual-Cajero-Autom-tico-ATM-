@@ -37,8 +37,8 @@
             <section class="cuerpo">
                 <div class="pantalla" id="pantallaEspera">
                     <div class="contenidoCentral">
-                        <h2 class="tituloPantalla">Bienvenido</h2>
-                        <p class="textoPantalla">Para comenzar, presione "Insertar tarjeta" en el
+                            <h2 class="tituloPantalla">Bienvenido</h2>
+                            <p class="textoPantalla">Para comenzar, presione "Insertar tarjeta" en el
                             módulo TARJETA, debajo de la pantalla.</p>
                     </div>
                 </div>
@@ -356,10 +356,32 @@
                         </p>
                         
                     </div>
+                    <button type="button" data-destino="pantallaComprobante" class="botonAtm izquierda filaCuatro"
+                    >Imprimir comprobante</button>
+                    
                     <button type="button" class="botonAtm derecha filaCuatro"
                         data-accion="continuar">Continuar</button>
                 </div>
 
+                <form class="pantalla" id="pantallaComprobante" data-operacion="imprimirComprobanteConsultaDeSaldo" novalidate hidden>
+                    <div class="contenidoCentral">
+                            <h2 class="tituloPantalla" id="comprobanteTitulo">Comprobante de Operación</h2>
+                            
+                            <div class="eco-modal-icon">
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.4 19 2c1 2 2 4.1 2 9 0 4.9-4 9-10 9z"></path>
+                                    <path d="M11 20v-5a3 3 0 0 1 3-3h5"></path>
+                                </svg>
+                                <span>Para cuidar el medio ambiente, te sugerimos evitar la impresión. ¿Deseas imprimir el comprobante de todos modos?</span>
+                            </div>
+                            
+                            <p class="mensajeError" role="alert"></p>
+                    </div>
+
+                    <button type="submit" class="botonAtm derecha filaCuatro">Continuar</button>
+                </form>
+
+                
                 <div class="pantalla" id="pantallaSalida" hidden>
                     <div class="contenidoCentral">
                         <h2 class="tituloPantalla">Gracias por utilizar Banco Santander</h2>
@@ -458,6 +480,7 @@
     <script src="js/pantallas/pantalla-login.js"></script>
     <script src="js/pantallas/pantalla-menu-principal.js"></script>
     <script src="js/pantallas/pantalla-menu-consultar.js"></script>
+    <script src="js/pantallas/pantalla-comprobante.js"></script>
     <script src="js/pantallas/pantalla-menu-extraer.js"></script>
     <script src="js/pantallas/pantalla-menu-transferencias.js"></script>
     <script src="js/pantallas/pantalla-menu-pagar-servicios.js"></script>

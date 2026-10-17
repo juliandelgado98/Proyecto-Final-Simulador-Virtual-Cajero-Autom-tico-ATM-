@@ -1,3 +1,4 @@
+
 function mostrarPantallaMenuConsultar() {
     mostrarPantalla("pantallaConsultar");
 }
@@ -7,6 +8,7 @@ function procesarConsultaSaldo() {
         "Consulta de saldo",
         //  `Su saldo disponible es ${formatearMoneda(cajero.consultarSaldo())}.`,
         ` `,
+        'pantallaConsultar',
         "pantallaConsultar"
     );
 }
