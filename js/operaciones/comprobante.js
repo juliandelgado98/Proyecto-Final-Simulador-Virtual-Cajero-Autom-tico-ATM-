@@ -1,25 +1,26 @@
-// pendiente: imprimirComprobante
-
 Object.assign(CajeroAutomatico.prototype, {
-    registrarUltimaOperacion(operacion, datos){
+    registrarUltimaOperacion(operacion, datos = "") {
         this.ultimaOperacion = {
-            ultimaOperacion: operacion,
+            nombreOperacion: operacion,
             info: datos
-        }
-    }
-})
+        };
+    },
 
-Object.assign(CajeroAutomatico.prototype, {
+
     imprimirComprobanteConsultaDeSaldo(operacion, datos) {
+        // Si datos es undefined o vacío, usa la info guardada en el objeto o un texto por defecto
+        const detalle = datos || this.ultimaOperacion?.info || `Saldo: $${this.saldoDisponibleCuentaActual}`;
+        const nombreOp = operacion || this.ultimaOperacion?.nombreOperacion || "Consulta de Saldo";
+
         const comprobante = `
         BANELCO
         -------------------------------
         COMPROBANTE DE OPERACIÓN
-        ${operacion} 
+        ${nombreOp}
         CUENTA DE AHORRO EN PESOS
         Fecha: ${new Date().toLocaleString("es-AR")}
         -------------------------------
-        ${datos}
+        ${detalle}
         -------------------------------
         BANCO: SANTANDER RIO S.A.
         SUCURSAL MAR DEL PLATA
@@ -28,7 +29,5 @@ Object.assign(CajeroAutomatico.prototype, {
         `;
 
         return comprobante;
-
     }
-    
 });

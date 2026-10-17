@@ -90,16 +90,13 @@ function mostrarResultado(tituloResultado, mensajeResultado, idPantallaAnterior,
     mostrarPantalla("pantallaResultado");
 }
 
-function mostrarErrorFormulario(formulario, mensajeError) {
-    formulario.querySelector(".mensajeError").textContent = mensajeError;
-}
-
 function imprimirComprobante(contenidoComprobante) {
     const ventanaComprobante = window.open("", "_blank", "width=400,height=600");
     ventanaComprobante.document.write("<html><head><title>Comprobante</title></head><body>");
     ventanaComprobante.document.write("<pre>" + contenidoComprobante + "</pre>");
     ventanaComprobante.document.write("</body></html>");
     ventanaComprobante.document.close();
+    actualizarPantalla();
 }
 
 accionesBoton.continuar = () => mostrarPantalla(pantallaRetorno);
