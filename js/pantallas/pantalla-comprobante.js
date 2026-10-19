@@ -2,14 +2,13 @@ function mostrarPantallaComprobante() {
     mostrarPantalla("pantallaComprobante");
 }
 
-function procesarimprimirComprobante() {
-    const { nombreOperacion, info} = cajero.ultimaOperacion;
-    if(cajero.cantidadPapelDisponible > 0) {
-        cajero.cantidadPapelDisponible -= 1;
-        imprimirComprobante(cajero.imprimirComprobanteConsultaDeSaldo(nombreOperacion, info));
-    } else {
-        mostrarPantallaError('Error: No pudimos procesar la solicitud', 'pantallaInicio');
+function procesarImprimirComprobante() {
+    if (!cajero.imprimirComprobante()) {
+        mostrarPantallaError(cajero.motivoRechazo, pantallaRetorno);
+        return;
     }
+    mostrarComprobanteEnImpresora(cajero.comprobanteEmitido);
+    mostrarPantallaExito("Retire su comprobante de la impresora.", pantallaRetorno);
 }
 
-manejadoresFormulario.imprimirComprobanteConsultaDeSaldo = procesarimprimirComprobante;
+manejadoresFormulario.imprimirComprobante = procesarImprimirComprobante;

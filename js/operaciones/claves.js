@@ -1,13 +1,9 @@
-// pendiente: gestionarClaves
-function verificarSesion(estado, sesion) {
-    if (!estado || !sesion) { mostrarPantallaError('Error: Su sesión expiró, iniciar sesión nuevamente', 'pantallaLogin');
-    throw new Error('Error: sesión no iniciada');
-    }
-}
-
 Object.assign(CajeroAutomatico.prototype, {
     gestionarClaves(claveActual, nuevaClave, confirmarClave) {
-        verificarSesion(this.estadoTarjeta, this.sesionActiva);
+        if (!this.estadoTarjeta || !this.sesionActiva) {
+            this.motivoRechazo = "Su sesión expiró. Inicie sesión nuevamente.";
+            return false;
+        }
         if (claveActual.length !== LARGO_PIN) {
             this.motivoRechazo = `La clave actual debe tener ${LARGO_PIN} dígitos.`;
             return false;
@@ -17,27 +13,25 @@ Object.assign(CajeroAutomatico.prototype, {
             const intentosRestantes = INTENTOS_MAXIMOS_PIN - this.intentosPin;
 
             this.motivoRechazo = intentosRestantes <= 0
-                ? "Supero la cantidad de intentos permitidos."
+                ? "Superó la cantidad de intentos permitidos."
                 : `Su clave actual es incorrecta. Intentos restantes: ${intentosRestantes}.`;
             return false;
         }
-        if (nuevaClave.length !== LARGO_PIN) {
-            this.motivoRechazo = `La clave nueva debe tener ${LARGO_PIN} dígitos.`;
+        if (!esPinNumerico(nuevaClave) || nuevaClave.length !== LARGO_PIN) {
+            this.motivoRechazo = `La clave nueva debe tener ${LARGO_PIN} números.`;
             return false;
         }
         if (nuevaClave === this.claveUsuario) {
-            this.motivoRechazo = 'La clave nueva no puede ser igual a la clave anterior';
+            this.motivoRechazo = "La clave nueva no puede ser igual a la actual.";
             return false;
         }
-        if (confirmarClave.length !== LARGO_PIN) {
-            this.motivoRechazo = `La clave a confirmar debe tener ${LARGO_PIN} dígitos.`;
-            return false;
-        }
-        if (nuevaClave !== confirmarClave ) {
-            this.motivoRechazo = 'este campo debe contener la clave nueva';
+        if (nuevaClave !== confirmarClave) {
+            this.motivoRechazo = "La clave nueva y su repetición no coinciden.";
             return false;
         }
         this.claveUsuario = nuevaClave;
+        this.intentosPin = 0;
+        this.motivoRechazo = "";
         return true;
     }
 });

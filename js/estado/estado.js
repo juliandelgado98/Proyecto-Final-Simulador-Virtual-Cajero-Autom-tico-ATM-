@@ -12,7 +12,10 @@ class CajeroAutomatico {
         this.historialTransferencias = [];
         this.ultimosPagos = [];
         this.proximosVencimientos = [...VENCIMIENTOS_SIMULADOS];
-        this.ultimaOperacion = { nombreOperacion: "", info: ""};
+        this.ultimaOperacion = { nombreOperacion: "", info: "" };
+        this.movimientos = [...MOVIMIENTOS_SIMULADOS];
+        this.billetesEntregados = [];
+        this.comprobanteEmitido = "";
     }
 
     descontarSaldo(montoADescontar) {

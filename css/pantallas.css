@@ -7,7 +7,6 @@
     margin: 0;
     display: grid;
     grid-template-columns: 46% minmax(0, 1fr) 46%;
-    /*grid-auto-rows: auto;*/
     column-gap: 1.2cqw;
     row-gap: 0;
     background: #ffffff;
@@ -112,13 +111,13 @@
     color: var(--grisBoton);
 }
 
-.eco-modal-icon {
+.iconoEco {
     color: #2e7d32;
     display: flex;
     align-items: center;
 }
 
-.eco-modal-icon span{
+.iconoEco span {
     color: #000000;
     font-weight: 700;
 }

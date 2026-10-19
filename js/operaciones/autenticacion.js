@@ -1,4 +1,8 @@
 Object.assign(CajeroAutomatico.prototype, {
+    superoIntentosPermitidos() {
+        return this.intentosPin >= INTENTOS_MAXIMOS_PIN;
+    },
+
     validarPIN(pinIngresado) {
         if (pinIngresado.length !== LARGO_PIN) {
             this.motivoRechazo = `La clave debe tener ${LARGO_PIN} dígitos.`;
@@ -9,7 +13,7 @@ Object.assign(CajeroAutomatico.prototype, {
             const intentosRestantes = INTENTOS_MAXIMOS_PIN - this.intentosPin;
 
             this.motivoRechazo = intentosRestantes <= 0
-                ? "Supero la cantidad de intentos permitidos."
+                ? "Superó la cantidad de intentos permitidos."
                 : `Clave incorrecta. Intentos restantes: ${intentosRestantes}.`;
             return false;
         }
