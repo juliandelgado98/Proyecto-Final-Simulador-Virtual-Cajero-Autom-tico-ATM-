@@ -1,6 +1,6 @@
 class CajeroAutomatico {
     constructor(saldoInicial) {
-        this.estadoTarjeta = false;
+        this.estadoTarjeta = true;
         this.sesionActiva = false;
         this.estadoDispensador = true;
         this.efectivoDisponibleCajero = EFECTIVO_INICIAL_CAJERO;
