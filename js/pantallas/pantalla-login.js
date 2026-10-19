@@ -9,11 +9,8 @@ function procesarLogin(formulario) {
         mostrarPantallaMenuPrincipal();
         return;
     }
-    if (cajero.intentosPin >= INTENTOS_MAXIMOS_PIN) {
-        const motivo = cajero.motivoRechazo;
-
-        cajero.expulsarTarjeta();
-        mostrarPantallaError(motivo, "pantallaSalida");
+    if (cajero.superoIntentosPermitidos()) {
+        expulsarPorExcesoDeIntentos();
         return;
     }
     mostrarErrorFormulario(formulario, cajero.motivoRechazo);

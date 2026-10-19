@@ -29,7 +29,7 @@ Acontinuación se establecen las convenciones de código, estándares de desarro
 ### `camelCase` (Joroba de camello)
 * **Regla:** La primera letra va en minúscula y cada palabra subsiguiente inicia con mayúscula.
 * **Uso habitual:** Variables y funciones/métodos.
-* **Ejemplo:** `totalAmount`, `getUserData`, `isLoggedIn`.
+* **Ejemplo:** `montoTotal`, `generarComprobante`, `consultarSaldo`.
 
 ---
 

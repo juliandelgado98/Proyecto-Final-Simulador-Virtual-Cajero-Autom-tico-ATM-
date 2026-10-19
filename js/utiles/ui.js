@@ -22,8 +22,10 @@ function actualizarSaldoEnPantalla() {
 function actualizarEstadoSesion() {
     const pantallaActiva = obtenerPantallaActiva();
 
-    document.getElementById("botonInicio").disabled = !cajero.sesionActiva;
-    document.getElementById("botonSalir").disabled = !cajero.sesionActiva;
+    const enProceso = pantallaActiva !== null && pantallaActiva.id === "pantallaProceso";
+
+    document.getElementById("botonInicio").disabled = !cajero.sesionActiva || enProceso;
+    document.getElementById("botonSalir").disabled = !cajero.sesionActiva || enProceso;
     document.getElementById("botonInsertarTarjeta").disabled =
         pantallaActiva === null || pantallaActiva.id !== "pantallaEspera";
 }
@@ -82,24 +84,59 @@ function mostrarPantalla(idPantalla) {
     actualizarPantalla();
 }
 
-function mostrarResultado(tituloResultado, mensajeResultado, idPantallaAnterior, idPantallaRetorno) {
+function mostrarResultado(tituloResultado, mensajeResultado, idPantallaRetorno) {
     document.getElementById("resultadoTitulo").textContent = tituloResultado;
     document.getElementById("resultadoMensaje").textContent = mensajeResultado;
     pantallaRetorno = idPantallaRetorno;
-    this.ultimaOperacion = idPantallaAnterior;
     mostrarPantalla("pantallaResultado");
 }
 
-function imprimirComprobante(contenidoComprobante) {
-    const ventanaComprobante = window.open("", "_blank", "width=400,height=600");
-    ventanaComprobante.document.write("<html><head><title>Comprobante</title></head><body>");
-    ventanaComprobante.document.write("<pre>" + contenidoComprobante + "</pre>");
-    ventanaComprobante.document.write("</body></html>");
-    ventanaComprobante.document.close();
-    actualizarPantalla();
+function mostrarErrorFormulario(formulario, mensajeError) {
+    formulario.querySelector(".mensajeError").textContent = mensajeError;
+}
+
+function mostrarComprobanteEnImpresora(textoComprobante) {
+    const ticket = document.getElementById("ticketComprobante");
+
+    ticket.textContent = textoComprobante;
+    ticket.hidden = false;
+    document.getElementById("botonRetirarComprobante").hidden = false;
+}
+
+function vaciarImpresora() {
+    const ticket = document.getElementById("ticketComprobante");
+
+    ticket.textContent = "";
+    ticket.hidden = true;
+    document.getElementById("botonRetirarComprobante").hidden = true;
+}
+
+function mostrarBilletesEnBandeja(billetes) {
+    const bandeja = document.getElementById("ranuraBilletes");
+
+    bandeja.replaceChildren();
+    billetes.forEach((billete) => {
+        const ficha = document.createElement("span");
+
+        ficha.className = "billeteEntregado";
+        ficha.textContent = `${billete.cantidad} × $ ${billete.valor.toLocaleString("es-AR")}`;
+        bandeja.append(ficha);
+    });
+    bandeja.classList.add("conBilletes");
+    document.getElementById("botonRetirarBilletes").hidden = false;
+}
+
+function vaciarBandejaBilletes() {
+    const bandeja = document.getElementById("ranuraBilletes");
+
+    bandeja.replaceChildren();
+    bandeja.classList.remove("conBilletes");
+    document.getElementById("botonRetirarBilletes").hidden = true;
 }
 
 accionesBoton.continuar = () => mostrarPantalla(pantallaRetorno);
+accionesBoton.retirarBilletes = vaciarBandejaBilletes;
+accionesBoton.retirarComprobante = vaciarImpresora;
 
 function conectarEventos() {
     document.addEventListener("click", (evento) => {

@@ -6,6 +6,11 @@ Object.assign(CajeroAutomatico.prototype, {
             destinatario: destinatario,
             monto: montoTransferido
         });
+        this.registrarMovimiento(
+            "Transferencia",
+            `${metodoTransferencia}: ${destinatario}`,
+            montoTransferido
+        );
     },
 
     transferirDineroCBU(montoATransferir, destinatarioCBU) {
@@ -18,7 +23,10 @@ Object.assign(CajeroAutomatico.prototype, {
         }
         this.descontarSaldo(montoATransferir);
         this.registrarTransferencia("CBU", destinatarioCBU, montoATransferir);
-        this.registrarUltimaOperacion('Transferencia por CBU', `Se realizó Transferencia de $${montoATransferir} al CBU: ${destinatarioCBU}`)
+        this.registrarUltimaOperacion(
+            "Transferencia por CBU",
+            `Transferencia de ${formatearMoneda(montoATransferir)} al CBU ${destinatarioCBU}.`
+        );
         this.motivoRechazo = "";
         return true;
     },
@@ -33,7 +41,10 @@ Object.assign(CajeroAutomatico.prototype, {
         }
         this.descontarSaldo(montoATransferir);
         this.registrarTransferencia("Alias", destinatarioAlias, montoATransferir);
-        this.registrarUltimaOperacion('Transferencia por CBU', `Se realizó Transferencia de $${montoATransferir} al CBU: ${destinatarioAlias}`)
+        this.registrarUltimaOperacion(
+            "Transferencia por Alias",
+            `Transferencia de ${formatearMoneda(montoATransferir)} al alias ${destinatarioAlias}.`
+        );
         this.motivoRechazo = "";
         return true;
     }

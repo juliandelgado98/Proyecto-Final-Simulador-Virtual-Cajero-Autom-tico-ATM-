@@ -1,6 +1,6 @@
 class CajeroAutomatico {
     constructor(saldoInicial) {
-        this.estadoTarjeta = true;
+        this.estadoTarjeta = false;
         this.sesionActiva = false;
         this.estadoDispensador = true;
         this.efectivoDisponibleCajero = EFECTIVO_INICIAL_CAJERO;
@@ -12,7 +12,10 @@ class CajeroAutomatico {
         this.historialTransferencias = [];
         this.ultimosPagos = [];
         this.proximosVencimientos = [...VENCIMIENTOS_SIMULADOS];
-        this.ultimaOperacion = { nombreOperacion: "", info: ""};
+        this.ultimaOperacion = { nombreOperacion: "", info: "" };
+        this.movimientos = [...MOVIMIENTOS_SIMULADOS];
+        this.billetesEntregados = [];
+        this.comprobanteEmitido = "";
     }
 
     descontarSaldo(montoADescontar) {

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .pantalla {
     height: 100%;
     max-height: none;
@@ -124,3 +125,129 @@
     font-weight: 700;
 }
 
+=======
+.pantalla {
+    height: 100%;
+    max-height: none;
+    padding: 0 1.2cqw;
+    grid-template-rows: var(--biselArriba) repeat(4, minmax(0, 1fr)) var(--biselAbajo);
+
+    margin: 0;
+    display: grid;
+    grid-template-columns: 46% minmax(0, 1fr) 46%;
+    column-gap: 1.2cqw;
+    row-gap: 0;
+    background: #ffffff;
+    border: 1px solid #b9cadb;
+    box-shadow: 0 4px 12px rgba(27, 79, 124, 0.18);
+}
+
+.contenidoCentral {
+    grid-column: 1 / 4;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 0.25em;
+    padding: 0 0.4cqw 0.5cqw;
+    text-align: left;
+}
+.contenidoAmplio {
+    grid-column: 1 / 4;
+    grid-row: 1 / 5;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 0.65em;
+    padding: 0 0.4cqw;
+    text-align: left;
+}
+
+.tituloPantalla {
+    margin: 0;
+    font-size: 1.45em;
+    font-weight: 600;
+    color: var(--azulTitulo);
+}
+
+.textoPantalla {
+    margin: 0;
+}
+
+.saldoPantalla {
+    margin: 0.2em 0 0;
+    padding: 0.35em 0.8em;
+    background: #eef4fa;
+    border-left: 0.4em solid var(--azulBanco);
+}
+
+.mensajeError {
+    min-height: 1.2em;
+    margin: 0;
+    font-weight: bold;
+    color: #b3121b;
+}
+
+.listaDatos {
+    max-height: 22cqw;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    overflow-y: auto;
+    list-style: none;
+}
+
+.itemLista {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1em;
+    margin-bottom: 0.4em;
+    padding: 0.45em 0.8em;
+    background: #eef4fa;
+    border-left: 0.4em solid var(--azulBanco);
+}
+
+.itemDetalle {
+    display: flex;
+    flex-direction: column;
+}
+
+.itemSecundario {
+    font-size: 0.82em;
+    color: #55677a;
+}
+
+.itemImporte {
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.comprobante {
+    margin: 0;
+    display: flex;
+    padding: 0.5em;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: #0000001a 0.2em 0.2em 0.5em;
+    border: #0000001a 1px solid;
+    border-radius: 0px 0px 30px;
+    color: var(--grisBoton);
+}
+
+.iconoEco {
+    color: #2e7d32;
+    display: flex;
+    align-items: center;
+}
+
+.iconoEco span {
+    color: #000000;
+    font-weight: 700;
+}
+
+>>>>>>> refs/remotes/origin/main

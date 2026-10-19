@@ -4,6 +4,9 @@ function mostrarPantallaError(mensajeError, idPantallaRetorno) {
     mostrarPantalla("pantallaError");
 }
 
-function mostrarEnDesarrollo(idPantallaRetorno) {
-    mostrarPantallaError("Esta funcion todavia esta en desarrollo.", idPantallaRetorno);
+function expulsarPorExcesoDeIntentos() {
+    const motivoDeExpulsion = cajero.motivoRechazo;
+
+    cajero.expulsarTarjeta();
+    mostrarPantallaError(motivoDeExpulsion, "pantallaSalida");
 }

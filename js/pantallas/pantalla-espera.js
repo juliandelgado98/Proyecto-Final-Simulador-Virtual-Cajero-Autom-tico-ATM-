@@ -1,4 +1,6 @@
 function mostrarPantallaEspera() {
+    vaciarBandejaBilletes();
+    vaciarImpresora();
     mostrarPantalla("pantallaEspera");
 }
 

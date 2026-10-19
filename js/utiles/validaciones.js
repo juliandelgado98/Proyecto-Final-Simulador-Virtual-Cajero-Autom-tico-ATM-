@@ -11,6 +11,10 @@ function esTextoNoVacio(texto) {
     return typeof texto === "string" && texto.trim() !== "";
 }
 
+function esPinNumerico(textoPin) {
+    return /^\d+$/.test(textoPin);
+}
+
 Object.assign(CajeroAutomatico.prototype, {
     validarOperacion(montoOperacion) {
         if (!this.estadoTarjeta) {
