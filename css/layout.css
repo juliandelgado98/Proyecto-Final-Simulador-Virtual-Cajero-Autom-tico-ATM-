@@ -279,13 +279,35 @@ img[src^="data:"] {
 }
 
 .billeteEntregado {
-    padding: 0.4cqw 1cqw;
-    font-size: 1.4cqw;
-    font-weight: bold;
-    color: #10321c;
-    background: linear-gradient(180deg, #bfe3c6 0%, #7fbf8d 100%);
-    border: 1px solid #3f7d4d;
-    border-radius: 2px;
+    z-index:1;
+    width: 100%;
+    height: 40px;
+    border: 1px solid white;
+    color:white;
+    background-color: #028137;
+    animation-name: cambiar-posicion;
+    animation-duration: 2s;
+    animation-fill-mode: forwards; 
+    transform-origin: top center;
+    animation-timing-function: ease-out;
+}
+
+.billeteEntregado:hover,
+.billeteEntregado:active {
+    background-color: #2bdf76;
+    transform: scale(0.98);
+}
+
+
+@keyframes cambiar-posicion {
+    from {
+        transform: translateY(0px) rotateX(0deg) translateZ(0px);
+        box-shadow: 0px 0px 0px rgba(0, 0, 0, 0)
+    }
+    to {
+        transform: translateY(20px) rotateX(-25deg) translateZ(10px);
+        box-shadow: 0px 20px 15px rgba(0,0,0,0.3);    
+    }
 }
 
 .botonRetirar {

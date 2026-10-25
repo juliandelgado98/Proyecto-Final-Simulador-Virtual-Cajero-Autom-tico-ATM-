@@ -116,14 +116,16 @@ function mostrarBilletesEnBandeja(billetes) {
 
     bandeja.replaceChildren();
     billetes.forEach((billete) => {
-        const ficha = document.createElement("span");
-
+        const ficha = document.createElement("button");
+        ficha.classList.add("botonTarjeta", "botonRetirar");
+        ficha.id = "botonRetirarBilletes";
+        ficha.dataset.accion = "retirarBilletes";
         ficha.className = "billeteEntregado";
         ficha.textContent = `${billete.cantidad} × $ ${billete.valor.toLocaleString("es-AR")}`;
         bandeja.append(ficha);
     });
     bandeja.classList.add("conBilletes");
-    document.getElementById("botonRetirarBilletes").hidden = false;
+    // document.getElementById("botonRetirarBilletes").hidden = false;
 }
 
 function vaciarBandejaBilletes() {
@@ -131,7 +133,7 @@ function vaciarBandejaBilletes() {
 
     bandeja.replaceChildren();
     bandeja.classList.remove("conBilletes");
-    document.getElementById("botonRetirarBilletes").hidden = true;
+    // document.getElementById("botonRetirarBilletes").hidden = true;
 }
 
 accionesBoton.continuar = () => mostrarPantalla(pantallaRetorno);
