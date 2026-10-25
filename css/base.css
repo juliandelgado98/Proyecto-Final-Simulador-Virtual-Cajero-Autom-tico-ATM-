@@ -29,9 +29,22 @@ body {
     min-height: 100vh;
     padding: 2vh 0;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     background: #cfd6dc;
     font-family: Arial, Helvetica, sans-serif;
     color: var(--textoOscuro);
+}
+
+footer {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+footer img {
+    width: auto;
+    height: 100px;
 }
