@@ -1,5 +1,6 @@
 function mostrarPantallaLogin() {
     mostrarPantalla("pantallaLogin");
+    mostrarClave();
 }
 
 function procesarLogin(formulario) {

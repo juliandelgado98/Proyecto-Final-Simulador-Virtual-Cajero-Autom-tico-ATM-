@@ -136,6 +136,11 @@ function vaciarBandejaBilletes() {
     // document.getElementById("botonRetirarBilletes").hidden = true;
 }
 
+function mostrarClave() {
+    const clave = document.getElementById("claveIngreso");
+    clave.innerHTML = `<p>Utilicé la siguiente clave de prueba: <b>${cajero.claveUsuario}</b></p>`;
+}
+
 accionesBoton.continuar = () => mostrarPantalla(pantallaRetorno);
 accionesBoton.retirarBilletes = vaciarBandejaBilletes;
 accionesBoton.retirarComprobante = vaciarImpresora;
