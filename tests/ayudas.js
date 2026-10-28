@@ -6,17 +6,17 @@ const RAIZ_PROYECTO = path.join(__dirname, "..");
 const ARCHIVOS_LOGICA = [
     "js/config/constantes.js",
     "js/config/datos-simulados.js",
-    "js/estado/estado.js",
+    "js/modelo/cajero.js",
     "js/utiles/formato.js",
     "js/utiles/validaciones.js",
-    "js/operaciones/tarjeta.js",
-    "js/operaciones/autenticacion.js",
-    "js/operaciones/consultas.js",
-    "js/operaciones/extraccion.js",
-    "js/operaciones/transferencias.js",
-    "js/operaciones/servicios.js",
-    "js/operaciones/claves.js",
-    "js/operaciones/comprobante.js"
+    "js/modelo/tarjeta.js",
+    "js/modelo/autenticacion.js",
+    "js/modelo/consultas.js",
+    "js/modelo/extraccion.js",
+    "js/modelo/transferencias.js",
+    "js/modelo/servicios.js",
+    "js/modelo/claves.js",
+    "js/modelo/comprobante.js"
 ];
 const NOMBRES_EXPUESTOS = [
     "CajeroAutomatico",

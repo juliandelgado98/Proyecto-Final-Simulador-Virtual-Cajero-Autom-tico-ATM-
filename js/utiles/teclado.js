@@ -72,6 +72,12 @@ function cancelarOperacionActiva() {
     if (pantallaActiva === null || !cajero.sesionActiva) {
         return;
     }
+
+    if (pantallaActiva.id === "pantallaResultado") {
+        mostrarPantalla(pantallaRetorno);
+        return;
+    }
+
     const botonVolver = pantallaActiva.querySelector(".izquierda.filaCuatro[data-destino]");
     if (botonVolver !== null) {
         mostrarPantalla(botonVolver.dataset.destino);

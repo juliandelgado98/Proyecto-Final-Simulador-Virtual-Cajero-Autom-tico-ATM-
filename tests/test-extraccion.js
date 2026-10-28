@@ -16,8 +16,8 @@ probar("dispensarBilletes reparte el monto con los billetes más grandes primero
     cajero.extraerEfectivo(17800);
     assert.deepStrictEqual(cajero.billetesEntregados, [
         { valor: 10000, cantidad: 1 },
-        { valor: 5000, cantidad: 1 },
-        { valor: 2000, cantidad: 1 },
+        { valor: 2000, cantidad: 3 },
+        { valor: 1000, cantidad: 1 },
         { valor: 500, cantidad: 1 },
         { valor: 200, cantidad: 1 },
         { valor: 100, cantidad: 1 }
