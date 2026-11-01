@@ -37,6 +37,26 @@ body {
     color: var(--textoOscuro);
 }
 
+.video {
+    display: flex;
+    align-items: center;
+    justify-items: flex-start;
+    width: 50%;
+    padding-top: 30px;
+    gap: 10px;
+}
+
+.video a {
+    color:#000000;
+    list-style: none;
+    text-decoration: none;
+    font-weight: bolder;
+}
+
+.video a:hover {
+    color: rgba(0, 0, 0, 0.76);
+}
+
 footer {
     display: flex;
     align-items: center;
