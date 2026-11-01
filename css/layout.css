@@ -338,3 +338,23 @@ img[src^="data:"] {
     background: #fbfbf6;
     border: 1px solid #cfcfc4;
 }
+
+.video {
+    display: flex;
+    align-items: center;
+    justify-items: flex-start;
+    width: 50%;
+    padding-top: 30px;
+    gap: 10px;
+}
+
+.video a {
+    color:#000000;
+    list-style: none;
+    text-decoration: none;
+    font-weight: bolder;
+}
+
+.video a:hover {
+    color: rgba(0, 0, 0, 0.76);
+}
